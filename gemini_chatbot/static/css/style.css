@@ -1,0 +1,132 @@
+/* Page setup */
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f4ff; /* light blue page background */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    margin: 0;
+    padding-top: 20px;
+}
+
+/* Wrapper */
+.chat-wrapper {
+    width: 60%;
+    max-width: 700px;
+}
+
+/* Chat heading */
+.chat-heading {
+    text-align: center;
+    color: #0d47a1; /* dark blue */
+    margin-bottom: 15px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Chat container */
+.chat-container {
+    background: white; /* chat area background */
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    padding: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Chat box */
+#chat-box {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* space between bubbles */
+}
+
+/* Bubble common */
+.bubble {
+    padding: 16px;            /* more padding */
+    border-radius: 12px;
+    max-width: 75%;
+    line-height: 1.6;         /* medium line spacing */
+    white-space: pre-line;
+    word-wrap: break-word;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+/* User bubble */
+.user {
+    background: #bbdefb; /* light blue */
+    align-self: flex-end;
+}
+
+/* Bot bubble */
+.bot {
+    background: #ffffff; /* white */
+    align-self: flex-start;
+    border-left: 4px solid #1976d2;
+}
+
+/* Bold sub-headings inside bot */
+.bot strong {
+    display: block;
+    color: #0d47a1;
+    margin-top: 4px;   
+    margin-bottom: 2px;     /* more space between headings */
+    font-weight: 600;
+}
+
+/* Lists inside bot bubble */
+.bot ul {
+    margin: 2px 0 4px 20px;
+    padding: 0;
+}
+
+.bot li {
+    margin-bottom: 2px;
+}
+
+/* Input area */
+.input-container {
+    display: flex;
+    margin-top: 10px;
+    gap: 8px;
+}
+
+input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+button {
+    padding: 12px 15px;
+    border: none;
+    background: #1976d2; /* blue button */
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #1565c0; /* darker blue on hover */
+}
+
+/* Scrollbar styling */
+#chat-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+#chat-box::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 4px;
+}
+
+#chat-box::-webkit-scrollbar-track {
+    background: transparent;
+}

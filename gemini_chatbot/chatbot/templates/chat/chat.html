@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gemini AI Chatbot</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="chat-wrapper">
+        <h1 class="chat-heading">Gemini AI Chatbot</h1>
+        <div class="chat-container">
+            <div id="chat-box"></div>
+            <div class="input-container">
+                <input id="user-input" placeholder="Type your question...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+const chatBox = document.getElementById("chat-box");
+const input = document.getElementById("user-input");
+
+async function sendMessage() {
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    addBubble(msg, "user");
+    input.value = "";
+
+    const res = await fetch(`/get_response/?message=${encodeURIComponent(msg)}`);
+    const data = await res.json();
+    addBubble(data.response, "bot");
+}
+
+function addBubble(text, role) {
+    const bubble = document.createElement("div");
+    bubble.className = `bubble ${role}`;
+    if(role === "user"){
+        bubble.textContent = text;
+    } else {
+        bubble.innerHTML = text.replace(/\n/g, "<br>");
+    }
+    chatBox.appendChild(bubble);
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+input.addEventListener("keydown", e => { if (e.key === "Enter") sendMessage(); });
+</script>
+</body>
+</html>
